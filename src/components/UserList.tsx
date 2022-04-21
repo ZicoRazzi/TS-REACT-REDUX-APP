@@ -4,16 +4,14 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { fetchUsers } from '../store/action_creators/user';
 import { useDispatch } from 'react-redux';
 import { Action } from 'redux';
+import { useAction } from '../hooks/useAction';
 
 const UserList: React.FC = () => {
   const { users, loading, error } = useTypedSelector((state) => state.user);
-  const dispatch = useDispatch();
-
-  console.log('USERS', users);
+  const { fetchUsers } = useAction();
 
   useEffect(() => {
-    //@ts-ignore
-    dispatch(fetchUsers());
+    fetchUsers();
   }, []);
 
   if (loading) {
