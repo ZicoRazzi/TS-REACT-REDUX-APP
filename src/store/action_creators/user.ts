@@ -9,11 +9,12 @@ export const fetchUsers = () => {
       const response = await axios.get(
         'https://jsonplaceholder.typicode.com/users'
       );
-      setTimeout(() => {}, 1000);
-      dispatch({
-        type: UserActionTypes.FETCH_USERS_SUCCESS,
-        payload: response.data,
-      });
+      setTimeout(() => {
+        dispatch({
+          type: UserActionTypes.FETCH_USERS_SUCCESS,
+          payload: response.data,
+        });
+      }, 1000);
     } catch (err) {
       dispatch({
         type: UserActionTypes.FETCH_USERS_ERROR,
